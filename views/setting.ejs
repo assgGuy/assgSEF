@@ -1,0 +1,17 @@
+<%- include('headerHost') %>
+
+<div class="profileBackground d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column">
+        <form action="/profile" method="GET">
+            <button class="settingBtn">Profile</button>
+        </form>
+        <form action="/propertylist" method="GET">
+            <button class="settingBtn">Property List</button>
+        </form>
+        <form action="/logout" method="GET">
+            <button class="settingBtn">Logout</button>
+        </form>
+    </div>
+</div>
+
+<%- include('footer') %>

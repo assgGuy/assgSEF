@@ -1,0 +1,63 @@
+<%- include('header') %>
+
+<div class="propBackground">
+    <h2><%= property.name %> in <%= property.address %></h2>
+    <p>Number of Guest: <%= property.guestNum %></p>
+    
+    <div class="d-flex align-content-around flex-wrap">
+        <div>
+            
+            <img class="leftImg" src="<%= 'data:' + property.images[0].contentType + ';base64,' + property.images[0].data.toString('base64') %>" alt="Property Image">
+        </div>
+        
+        <div>
+            <div >
+                <!-- Center Images (Img[1] and Img[2]) -->
+                <img class="centerImg" src="<%= 'data:' + property.images[1].contentType + ';base64,' + property.images[1].data.toString('base64') %>" alt="Property Image">
+            </div>
+            <div >
+                <img class="centerImg" src="<%= 'data:' + property.images[2].contentType + ';base64,' + property.images[2].data.toString('base64') %>" alt="Property Image">
+            </div>
+        </div>
+        
+        <div>
+            <div  >
+                <!-- Right Images (Img[3] and Img[4]) -->
+                <img class="rightImg" src="<%= 'data:' + property.images[3].contentType + ';base64,' + property.images[3].data.toString('base64') %>" alt="Property Image">
+            </div>
+            <div  >
+                <img class="rightImg" src="<%= 'data:' + property.images[4].contentType + ';base64,' + property.images[4].data.toString('base64') %>" alt="Property Image">
+            </div>
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3>Description</h3>
+            <p><%= property.description %></p>
+        </div>
+        
+        <div class="bookBorder d-flex flex-column align-items-center p-3">
+            <h3>Price: RM<%= property.price %> </h3>
+            
+            <form class="d-flex flex-column align-items-center" action="/bookingProp/<%= property._id %>" method="POST">
+                <div class="d-flex">
+                    <div class="m-2">
+                        <p>Check-In: </p>
+                        <input class="widgetField text-center" type="date" id="checkIn" name="checkIn" placeholder="Check-in" />
+                    </div>
+                    <div class="m-2">
+                        <p>Check-Out: </p>
+                        <input class="widgetField text-center" type="date" id="checkOut" name="checkOut" placeholder="Check-out" />
+                    </div>
+                </div>
+                <input class="widgetField" type="text" placeholder="Number of Guest" name="guestNum">    
+                <input class="viewBtn" type="submit" value="Book">
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>
+
+

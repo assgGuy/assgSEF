@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+<div class="profileBackground d-flex flex-column justify-content-center align-items-center">
+    <h1>Vacay Payment Gateway</h1>
+    <div class="payBorder p-5 d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-between">
+            <div class="p-5 m-5 my-0">
+                <div class="d-flex align-items-center">
+                    <div class="mr-3">
+                        <p>Check- In:</p>
+                        <div class="payField p-2 m-2">
+                            <p class="text-center mb-0"><%= booking.checkin.toDateString() %></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Check-Out:</p>
+                        <div class="payField p-2 m-2">
+                            <p class="text-center mb-0"><%= booking.checkout.toDateString() %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payImage">
+                <!-- Display property image or any relevant content -->
+                <img src="<%= 'data:' + property.images[0].contentType + ';base64,' + property.images[0].data.toString('base64') %>" alt="Property Image">
+            </div>
+        </div>
+        <form class="d-flex flex-column align-items-center" action="/paymentConfirmation" method="POST">
+            <div class="d-flex justify-content-between">
+                <div class="p-3 m-3">
+                    <p>Bank Account No. :</p>
+                    <input class="payField" type="text" placeholder="Enter Bank Account No." name="bankNo">
+                </div>
+                <div class="p-3 m-3">
+                    <p>Bank Name:</p>
+                    <input class="payField" type="text" placeholder="Enter Bank Name" name="bankName">
+                </div>
+            </div>
+            <h1>Total Price: RM<%= booking.totalPrice %></h1>
+            <input type="hidden" name="propertyId" value="<%= property._id %>">
+            <input type="hidden" name="bookingId" value="<%= booking._id %>">
+            <button class="payBtn" type="submit">Pay Booking</button>
+        </form>
+    </div>
+</div>
+
+<%- include('footer') %>

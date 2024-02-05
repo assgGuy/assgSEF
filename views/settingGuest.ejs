@@ -1,0 +1,20 @@
+<%- include('header') %>
+
+<div class="profileBackground d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column">
+        <form action="/profileGuest" method="GET">
+            <button class="settingBtn">Profile</button>
+        </form>
+        <form action="/bookHistory" method="GET">
+            <button class="settingBtn">Booking History</button>
+        </form>
+        <form action="/guestView" method="GET">
+            <button class="settingBtn">Home</button>
+        </form>
+        <form action="/logout" method="GET">
+            <button class="settingBtn">Logout</button>
+        </form>
+    </div>
+</div>
+
+<%- include('footer') %>

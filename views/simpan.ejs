@@ -1,0 +1,25 @@
+
+<%- include('header') %>
+
+<div class="propBackground">
+    <h3 class="p-2">Booking History</h3>
+    
+    <!-- Display the details of the selected property -->
+    <div class="showBorder p-3">
+        <% if (property && property.images && property.images.length > 0) { %>
+            <img class="small-image" src="<%= 'data:' + property.images[0].contentType + ';base64,' + property.images[0].data.toString('base64') %>" alt="Property Image">
+        <% } else { %>
+            <p>No property image available</p>
+        <% } %>
+        <p><%= property.name %></p>
+        <p><%= property.guestNum %> Guest</p>
+        <p>Total Price: RM<%= booking.totalPrice %></p>
+        <p>Check-In: <%= booking.checkin.toDateString() %></p>
+        <p>Check-Out: <%= booking.checkout.toDateString() %></p>
+    </div>
+
+    <!-- Other details and buttons... -->
+
+</div>
+
+<%- include('footer') %>

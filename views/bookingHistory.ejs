@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+<div class="propBackground d-flex" style="flex-direction: column;">
+    <!-- Display the details of the booking history -->
+    <h3 class="p-2">Booking History</h3>
+
+    <div class="d-flex flex-wrap">
+        <% bookingHistory.forEach((history) => { %>
+            <div class="showBorder p-3">
+                <% if (history.propertyId && history.propertyId.images && history.propertyId.images.length > 0) { %>
+                    <img class="small-image" src="<%= 'data:' + history.propertyId.images[0].contentType + ';base64,' + history.propertyId.images[0].data.toString('base64') %>" alt="Property Image">
+                <% } else { %>
+                    <p>No property image available</p>
+                <% } %>
+
+                <p><%= history.propertyId.name %></p>
+                <p><%= history.propertyId.guestNum %> Guest</p>
+                <p>Total Price: RM<%= history.bookingId.totalPrice %></p>
+                <p>Check-In: <%= history.bookingId.checkin.toDateString() %></p>
+                <p>Check-Out: <%= history.bookingId.checkout.toDateString() %></p>
+            </div>
+        <% }) %>
+    </div>
+
+    <!-- Other details and buttons... -->
+
+</div>
+
+<%- include('footer') %>
+

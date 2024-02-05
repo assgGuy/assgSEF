@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+<div class="bookingHistory">
+    <h2>Thank You For Your Booking</h2>
+
+    <div class="bookingEntry">
+        <!-- Display the first image if available -->
+        <% if (property && property.images && property.images.length > 0) { %>
+            <div class="bookingImageContainer">
+                <img class=".small-image" src="<%= 'data:' + property.images[0].contentType + ';base64,' + property.images[0].data.toString('base64') %>" alt="Property Image">
+            </div>
+        <% } else { %>
+            <p class="noImageMessage">No property image available</p>
+        <% } %>
+
+        <div class="bookingDetails">
+            <p>Check-In: <%= booking.checkin.toDateString() %></p>
+            <p>Check-Out: <%= booking.checkout.toDateString() %></p>
+            <p>Total Price: RM<%= booking.totalPrice %></p>
+            <!-- Add other booking details as needed -->
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>
+
+
+
+
+
+
+
+

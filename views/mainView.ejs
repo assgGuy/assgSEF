@@ -1,0 +1,36 @@
+<%- include('header') %>
+
+<div class="propBackground">
+    <% if (user && user.type === 'guest') { %>
+        <!-- Display only for guests -->
+        <h3 class="p-2">Dear Guest, Welcome to Vacay</h3>
+        <div class="d-flex flex-wrap justify-content-start">
+            <% propertyHosts.forEach(propertyHost => { %>
+                <div class="showBorder p-3">
+                    <% if (propertyHost.images && propertyHost.images.length > 0) { %>
+                        <img class="small-image" src="<%= 'data:' + propertyHost.images[0].contentType + ';base64,' + propertyHost.images[0].data.toString('base64') %>" alt="Property Image">
+                    <% } else { %>
+                        <img class="small-image" src="placeholder-image-url.jpg" alt="Placeholder Image">
+                    <% } %>
+                    <p><strong><%= propertyHost.name %></strong></p>
+                    <p><strong>Price: RM</strong> <%= propertyHost.price %> /Night</p>
+                    <p><strong>Number of Guest: </strong> <%= propertyHost.guestNum %></p>
+                    <form action="/propertyView/<%= propertyHost._id %>" method="GET">
+                        <button class="viewBtn">View</button>
+                    </form>
+                    
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <!-- Display something else for hosts if needed -->
+        <p>Hosts see a different view</p>
+    <% } %>
+</div>
+<%- include('footer') %>
+
+
+
+
+
+

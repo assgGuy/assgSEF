@@ -1,0 +1,27 @@
+<%- include('headerAdmin') %>
+
+<div class="profileBackground d-flex flex-column">
+    <h3>Property Verify List</h3>
+
+    <% propertyHosts.forEach(propertyHost => { %>
+        <div class="propList d-flex justify-content-between m-3 p-4 align-items-center">
+            <div>
+                <% if (propertyHost.images && propertyHost.images.length > 0 && propertyHost.images[0] && propertyHost.images[0].contentType && propertyHost.images[0].data) { %>
+                    <img src="data:<%= propertyHost.images[0].contentType %>;base64,<%= propertyHost.images[0].data.toString('base64') %>" alt="Property Image">
+                <% } else { %>
+                    <p>No Image</p>
+                <% } %>                
+            </div>
+            <div>
+                <p><%= propertyHost.name %></p>
+                <p>Total Guest: <%= propertyHost.guestNum %> Guest</p>
+                <p>Price: <%= propertyHost.price %>/Night</p>
+                <p>Location: <%= propertyHost.address %></p>
+            </div>
+            <button class="removeBtn" type="submit">Verify</button>
+        </div>
+    <% }); %>
+
+</div>
+
+<%- include('footer') %>
